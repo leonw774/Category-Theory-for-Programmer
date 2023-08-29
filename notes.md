@@ -1,10 +1,9 @@
 ---
 tags: class_note, class_note_online_course
+title: Category Theory for Programmers
 ---
 
 [toc]
-
-# Category Thoery Note
 
 Lecture Videos (Youtube): https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
 
@@ -12,13 +11,14 @@ Lecture Videos (Youtube): https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbga
 # 1. What is category
 
 CATEGORY = (set of objects, set of morphisms)
+
 EMPTY CATEGORY = (Empty set, empty set)
 
 ## Objects & Morphisms
 
 In categort theory, objects is any thing in the objects set. Like nodes & arrows in graph, a morphism is a relationship from an object to an other object.
 
-## Properties of Morphisms
+Objects in a category must have an **identity morphism**, an arrow started from itself toward itself.
 
 Morphisms in category must be associative:
   - associative: $f, g, h$ are morphisms, $f \circ (g \circ h) = (f \circ g) \circ h$
@@ -54,10 +54,13 @@ Monoid $(S, ⊕)$ has:
 
 The group $(Z^+_N, +)$ is a monoid where $Z^+_N$ is set of positive finite integers smaller than $N$, $N$ is a prime number, and $+$ is a binary operation of addition modulo N.
 
-A monoid can be defined by only two element: 
-1. the identity element
-2. the bianry operation 
+To see monoid as category:
+- The object are $S$
+- The morphisms are $a$, where $a \in S$ that exist between $b$ and $c$ if $b \oplus a = c$
+- The composition of morphisms: $a \oplus b$
+- The identity morphism is the identity element
 
+Does not confuse this example with *monoidal category* or *monoid object*.
 
 # 3. Kleisli Categories
 
@@ -392,7 +395,7 @@ List(X) &= 1 + X + X^2 + X^3 \cdots
 \end{aligned}
 $$
 
-# Functors
+# 6. Functors
 
 **Functor** is the mapping from category to category.
 
