@@ -197,9 +197,7 @@ class CounterBadProduct {
 }
 ```
 
-Here, `BadProduct` is not a product of `int` and `bool`, because there is a `CounterBadProduct` such that there is no morphism `toBadProduct: CounterBadProduct → BadProduct`.  
-
-We expect for every instance `p` of `CounterBadProduct`, it holds that `p.toBool() == p.toBadProduct().toBool()`. But apparently it is not the case if `p.toBool() == false`.
+Here, `BadProduct` is not a product of `int` and `bool`, because there is a `CounterBadProduct`. We expect for every instance `p` of `CounterBadProduct`, it holds that `p.toBool() == p.toBadProduct().toBool()`. But apparently it is not the case if `p.toBool() == false`.
 
 ``` C++
 class BadProduct2 {
@@ -223,7 +221,7 @@ class CounterBadProduct2 {
 }
 ```
 
-In ths case, there exists `toBadProduct2()` such that, for every instance `p` of `CounterBadProduct2`, it holds that `p.toBool() == p.toBadProduct2().toBool()` and `p.toInt() == p.toBadProduct2().toInt()`. However, `toBadProduct2()` is not unique. So `BadProduct2` is not the product of `int` and `bool`.
+In this case, there is `toBadProduct2()` such that, for every instance `p` of `CounterBadProduct2`, it holds that `p.toBool() == p.toBadProduct2().toBool()` and `p.toInt() == p.toBadProduct2().toInt()`. However, `toBadProduct2()` is not unique. So `BadProduct2` is not the product of `int` and `bool`.
 
 ``` C++
 class PossibleProduct {
@@ -241,7 +239,7 @@ class CounterPossibleProduct {
 }
 ```
 
-If cardinality of `int` is infinite, then this `PossibleProduct` is a product of `int` and `bool`. However, in C++, cardinality of `int` is at most $2^{64} - 1$. So it can't be the product in this programming language, considering an instance `p` of `CounterPossibleProduct` where `p.toInt() == pow(2, 62)`.
+If cardinality of `int` is infinite, then this `PossibleProduct` is a product of `int` and `bool`. However, in C++, cardinality of `int` is finite. So it can't be the product in this programming language, considering an instance `p` of `CounterPossibleProduct` where `p.toInt() == pow(2, 62)`.
 
 ## What is "unique up to isomorphism"
 
