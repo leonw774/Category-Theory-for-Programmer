@@ -6,7 +6,7 @@ title: Category Theory for Programmers
 [toc]
 
 Lecture Videos (Youtube): https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
-
+This note on Hackmd: https://hackmd.io/OkQvCLkHSmaizwJGSJCUUA
 
 # 1. What is category
 
@@ -25,11 +25,17 @@ Morphisms in category must be associative:
 
 ## Some special morphisms
 
-A morphism $f: X → Y$ is called a **monomorphisms** if $f \circ g1 = f \circ g2$ implies $g1 = g2$ for all morphisms $g1, g2: Z → X$. Monomorphisms has a **left inverse** if there is a morphism $g: Y → X$ such that $g \circ f = id_X$.
+A morphism $f: x → y$ is **monomorphisms**
+- if $f \circ g1 = f \circ g2$ implies $g1 = g2$ for all morphisms $g1, g2: z → x$.
+- Monomorphisms has a **left inverse** if there is a morphism $g: y → x$ such that $g \circ f = id_x$.
 
-A morphism $f: X → Y$ is called an **epimorphism** if $g1 \circ f = g2 \circ f$ implies $g1 = g2$ for all morphisms $g1, g2: Y → Z$. Epimorphism has a **right inverse** if there is a morphism $g: Y → X$ such that $f \circ g = id_Y$.
+A morphism $f: x → y$ is **epimorphism**
+- if $g1 \circ f = g2 \circ f$ implies $g1 = g2$ for all morphisms $g1, g2: y → z$.
+- Epimorphism has a **right inverse** if there is a morphism $g: y → x$ such that $f \circ g = id_y$.
 
-A morphism $f: X → Y$ is called an **isomorphism** if there exists a morphism $g: Y → X$ such that $f \circ g = id_Y$ and $g \circ f = id_X$. $g$ is called simply the **inverse** of $f$.
+A morphism $f: x → y$ is **isomorphism**
+- if there exists a morphism $g: y → x$ such that $f \circ g = id_y$ and $g \circ f = id_x$.
+- $g$ is called simply the **inverse** of $f$.
 
 ## Pure vs. Dirty Function
 
@@ -44,10 +50,10 @@ A category is free category iff $∀$ morphisms $f, g$ , $(f \circ g)$ is also i
 
 ## Monoid
 
-Monoid(單群/么群) is a kind of group that is simplest category
-Monoid $(S, ⊕)$ has:
+Monoid is a kind of group that is simplest category
+Monoid $(S, \cdot)$ has:
 
-- A binary operation ⊕
+- A binary operation \dot
     + closed
     + associative
 - The identity
@@ -55,12 +61,11 @@ Monoid $(S, ⊕)$ has:
 The group $(Z^+_N, +)$ is a monoid where $Z^+_N$ is set of positive finite integers smaller than $N$, $N$ is a prime number, and $+$ is a binary operation of addition modulo N.
 
 To see monoid as category:
-- The object are $S$
-- The morphisms are $a$, where $a \in S$ that exist between $b$ and $c$ if $b \oplus a = c$
-- The composition of morphisms: $a \oplus b$
+- The singleton object $S$
+- The morphisms are $a$, where $a \in S$
+- The composition of morphisms: $a \cdot b$
 - The identity morphism is the identity element
 
-Does not confuse this example with *monoidal category* or *monoid object*.
 
 # 3. Kleisli Categories
 
@@ -90,17 +95,17 @@ We want to define a function composition operater that *chain up* our log string
 - Let $m$ be a morphism that make the input/output of a function into *embellished type*.  
 - $m$ is a part of so-called *monad*. (Detailed in latter chapter.)  
 - Let f, g be morphisms in Kleisli Category:  
-  - $f: T_1 → m(T_2)$
-  - $g: T_2 → m(T_3)$
-- The composition under Kleisli is $(g \circ f): T1 → m(T3)$
+  - $f: t_1 → m(t_2)$
+  - $g: t_2 → m(t_3)$
+- The composition under Kleisli is $(g \circ f): t_1 → m(t_3)$
 
 ## Comparison table
 
-Let's say there is a category $C$, object $X, Y ,Z$ and two morphisms $f: X → Y$ and $g: Y → Z$.
+Let's say there is a category $C$, object $x, y, z$ and two morphisms $f: x → y$ and $g: y → z$.
 
-Their Kleisli counterpart over morphism $m$ are category $C_k$, object $X', Y', Z'$ and two morphisms $f': X' → Y'$ and $g': Y' → Z'$.
+Their Kleisli counterpart over morphism $m$ are category $C_k$, object $x', y', z'$ and two morphisms $f': x' → y'$ and $g': y' → z'$.
 
-| $C$        | $Ck$       |
+| $C$        | $C_k$       |
 | ---        | ---        |
 | $m$        | $id_{X'}$  |
 | $m \circ f$    | $f'$       |
@@ -116,14 +121,14 @@ Their Kleisli counterpart over morphism $m$ are category $C_k$, object $X', Y', 
 
 ## Initial and Terminal Object
 
-- An object $I$ is a inital object in $C$ if for every object $X$ in $C$, there exists exactly one morphism $I → X$.
-- An object $T$ is a terminal object in $C$ if for every object $X$ in $C$, there exists exactly one morphism $X → T$.  
+- An object $i$ is a inital object in $\mathcal{C}$ if for every object $x$ in $ob(C)$, there exists exactly one morphism $i → x$.
+- An object $t$ is a terminal object in $C$ if for every object $x$ in $ob(C)$, there exists exactly one morphism $x → t$.  
 
 Initial & terminal objects are *unique up to unique isomorphism*.
 
 ### Example
 
-- The empty set is the unique initial object in *the category of sets*. Because there is exactly one empty function for each set, thus the empty function $\varnothing → X$ is not equal to $\varnothing → Y$ if and only if $X \ne Y$
+- The empty set is the unique initial object in *the category of sets*. Because there is exactly one empty function for each set, thus the empty function $\varnothing → x$ is not equal to $\varnothing → y$ if and only if $x \ne y$
 - Every one-element set (singleton) is a *terminal object* in *the category of sets*.
 
 ## Opposite Category
@@ -141,8 +146,8 @@ Applying duality, this means an *initial object* in a category $C$ is a *termina
 
 ## Definition
 
-A **product** of object $A$ and $B$ is a object $C$ equipped with two morphisms $p_1: C → A$ and $p_2: C → B$ satisfying the following universal property:
-- For every object $D$ and every pair of morphisms $q_1: D → A$ and $q_2: D → B$ there is a *unique* morphism $m: D → C$ such that $q_1 = p_1 \circ m$ and $q_2 = p_2 \circ m$. ($m$ factorize $q_1$ and $q_2$)
+A **product** of object $a$ and $b$ is a object $c$ equipped with two morphisms $p_1: c → a$ and $p_2: c → b$ satisfying the following universal property:
+- For every object $d$ equipped with any pair of morphisms $q_1: d → a$ and $q_2: d → b$ there is a *unique* morphism $m: d → c$ such that $q_1 = p_1 \circ m$ and $q_2 = p_2 \circ m$. (We say that $m$ factorize $q_1$ and $q_2$)
 
 ```
  D (any product candidate)
@@ -161,12 +166,12 @@ graph TD
     D -.->|!m| C
 ```
 
-We denote the product of $A$ and $B$ as $A \times B$
+We denote the product of $a$ and $b$ as $a \times b$
 
-Whether a product exists may depend on the category or on $A$ and $B$. If it does exist, *it is unique up to canonical isomorphism*, so one may speak of *the* product.  
+Whether a product exists may depend on the category or on $a$ and $b$. If it does exist, *it is unique up to canonical isomorphism*, so one may speak of *the* product.  
 The product is the terminal object in the category of product candidates.
 
-The morphisms $p1$ and $p2$ are called the **canonical projections** or **projection morphisms**.
+The morphisms $p_1$ and $p_2$ are called the **canonical projections** or **projection morphisms**.
 
 ## Examples of Product
 
@@ -251,11 +256,11 @@ if every isomorphism between those objects are unique, it is called **"unique up
 
 All isomorphic objects have the same relationship with other objects.   
 
-Suppose $A \simeq B$ with isomorphism $α: A → B$, then for all object $Y$, there are $Hom(A, Y)$ and $Hom(B, Y)$ and a bijection function $ϕ: Hom(A, Y) → Hom(B, Y)$.  
+Suppose $a \simeq b$ with isomorphism $α: a → b$, then for all object $y$, there are $Hom(a, y)$ and $Hom(b, y)$ and a bijection function $ϕ: Hom(a, y) → Hom(b, y)$.  
 
-$Hom(A, Y)$ means the set of all morphism from $A$ to $Y$
+$Hom(a, y)$ means the set of all morphism from $A$ to $Y$
 
-Because for all $f: A → Y$ and $g: B → Y$:
+Because for all $f: a → y$ and $g: b → y$:
 $$
 \begin{aligned}
     ϕ(f) &= g = f \circ α^{-1} \\
@@ -263,14 +268,14 @@ $$
 \end{aligned}
 $$
 
-we show that $ϕ^{-1} \circ ϕ: Hom(A, Y) → Hom(A,Y)$ is the identity function:
+we show that $ϕ^{-1} \circ ϕ: Hom(a, y) → Hom(a, y)$ is the identity function:
 
 $$
 \begin{aligned}
     (ϕ^{-1} \circ ϕ)(f) &= ϕ^{-1}(ϕ(f)) \\
     &= ϕ^{-1}(f \circ α^{-1}) \\
     &= f \circ α^{-1} \circ α \\
-    &= f \circ id_A \\
+    &= f \circ id_a \\
     &= f \\
 \end{aligned}
 $$
@@ -283,8 +288,8 @@ So we have shown that **there is a bijection between sets of morphisms of isomor
 
 Coproduct is basically the product with reverse direction of morphisms in the definition.
 
-Let object $C$ be the product of object $A$ and $B$, the coproduct of $C$ is $C_{op}$ equipped with two morphisms $p_1: A → C$ and $p_2: B → C$ satisfying the following universal property:  
- - For every object $D$ and every pair of morphisms $q_1: A → D$ and $q_2: B → D$ there is a *unique* morphism $m: C → D$ such that $q_1 = (m \circ p_1)$ and $q_2 = (m \circ p_2)$. ($m$ factorize $q_1$ and $q_2$)
+Let object $C$ be the product of object $A$ and $B$, the coproduct of $C$ is $C_{op}$ equipped with two morphisms $p_1: a → c$ and $p_2: b → c$ satisfying the following universal property:  
+ - For every object $d$ and every pair of morphisms $q_1: a → d$ and $q_2: b → d$ there is a *unique* morphism $m: c → d$ such that $q_1 = (m \circ p_1)$ and $q_2 = (m \circ p_2)$. (We say that $m$ factorize $q_1$ and $q_2$)
 
 We denote the product of $A$ and $B$ as $A \oplus B$
 
@@ -329,45 +334,36 @@ class Either {
 
 A category and product/coproduct forms symmetric monoid.
 
-Commutativity: it is pretty obvious that there existed a unique isomorphism from $A \times B$ to $B \times A$, which is $Swap()$.
+Commutativity: it is pretty obvious that there existed a unique isomorphism from $a \times b$ to $b \times a$, which is $Swap()$.
 
-Associativity: we can find a isomorphism from $A \times (B \times C)$ to $(A \times B) \times C$. To show that, consider the function that turns $(a, (b, c))$ into $((a, b), c)$. This function exists and has inverse.
+Associativity: we can find an isomorphism from $a \times (b \times c)$ to $(a \times b) \times c$. To show that, consider the functions that turns $(a, (b, c))$ into $((a, b), c)$. Those functions exists and all have inverses.
 
 Identity:
-- For product, it is the terminal object $T$.
-- For coproduct, it is the initial object $I$.
+- For product, it is the terminal object $t$.
+- For coproduct, it is the initial object $i$.
 
-Let $P = A \times T$, $p_1: P → A$, and $p_2: P → T$. Let any object $Q$ with $q_1: Q → A$ and $q_2: Q → T$. By the universal property of the product, there exist an unique the morphism $m: Q → P$ such that $q_1 = p_1 \circ m$ and $q_2 = p_2 \circ m$. And because $T$ is the terminal object, $p_2$ and $q_2$ are unique.
+Let $b = a \times t$, $p: b → a$, and $u_b: b → t$. Because the uniqueness of ternimal morphisms $u_b$ is unique.
 
-Let $Q = A$, $q_1 = id_A$ and $q_2: A → T$, it gives that $q_1 = p_1 \circ m = id_A$. We thus have:
+Considering $a$ itself as the product candidate with $id_a: a → a$ and $u_a: a → t$. We then have an unique morphism $m: a → b$. By the universal property of the product, $id_a = p \circ m$ and $u_a = u_b \circ m$.
 
-$$
-\begin{aligned}
-    id_A &= p_1 \circ m \\
-    id_A \circ p_1  &= p_1 \circ m \circ p_1 \\
-    p_1  &= p_1 \circ m \circ p_1 \\
-\end{aligned}
-$$
-
-Also consider:
+Consider:
 
 $$
 \begin{aligned}
-    q_2 &= p_2 \circ m \\
-    q_2 \circ p_1 &= p_2 \circ m \circ p_1 \\
+    u_a &= u_b \circ m \\
+    u_a \circ p &= u_b \circ m \circ p \\
 \end{aligned}
 $$
 
-since $q_2 \circ p_1$ is morphism from $P → T$, it is unique, thus $q_2 \circ p_1 = p_2$. We have:
+since $u_a \circ p$ is morphism from $b → t$, it is unique, therefore $u_a \circ p = u_b$. We have:
 
 $$
-p_2 = p_2 \circ m \circ p_1 \\
-p_1 = p_1 \circ m \circ p_1
+u_b = u_b \circ m \circ p \\
 $$
 
-By uniqueness of identity, $m \circ p_1 = id_P$
+By uniqueness of identity, $m \circ p = id_b$
 
-Since $m$ is inverse of $p_1$, and vice versa. $p_1$ is an isomorphism. Thus $P \simeq A$.
+Since $p \circ m = id_a$ and $m \circ p = id_b$. $p$ is an isomorphism. Thus $b \simeq a$.
 
 In similar way, we can prove the identityness of initial object $I$ in coproduct operation.
 
@@ -385,11 +381,11 @@ We can write down the difinition in algebra:
 
 $$
 \begin{aligned}
-List(X) &= 1 + X \times List(X) \\
-List(X) &= 1 + X \times (1 + X \times List(X)) \\
-List(X) &= 1 + X \times 1 + X \times X \times List(X) \\
+List(x) &= 1 + x \times List(x) \\
+List(x) &= 1 + x \times (1 + x \times List(x)) \\
+List(x) &= 1 + x \times 1 + x \times x \times List(x) \\
 \vdots \\
-List(X) &= 1 + X + X^2 + X^3 \cdots
+List(x) &= 1 + x + x^2 + x^3 \cdots
 \end{aligned}
 $$
 
@@ -401,10 +397,10 @@ To map two categorys $C$ and $D$:
 - Map the set of objects in $C$ to the set of objects in $D$
 - Map the set of morphisms from $C$ to the set of morphisms in $D$, in the way that **structure is preserved**
 
-For a functor $F: C → D$, for all $f: X → Y$ and $g: Y → Z$ in $C$, it holds that:
-- $F(f): F(X) → F(Y)$
-- $F(g \circ f): F(X) → F(Z) = F(g) \circ F(f)$
-- $F(id_X) = id_{F(X)}$
+For a functor $F: C → D$, for all $f: x → y$ and $g: y → z$ in $C$, it holds that:
+1. $F(f): F(x) → F(y)$
+2. $F(g \circ f): F(x) → F(z) = F(g) \circ F(f)$
+3. $F(id_x) = id_{F(x)}$
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Commutative_diagram_of_a_functor.svg/260px-Commutative_diagram_of_a_functor.svg.png)
 
@@ -415,10 +411,14 @@ Functors and categories make a **category of categories**.
 
 ## Special Functors
 
-- **Faithful functor**: injective on the morphism sets
-- **Full functor**: surjective on the morphism sets.
-- **Constant functor**: Constant functor at $X$, denoted as $\Delta_X: C → D$, maps all objects from category $C$ to a fixed object $X \in D$ and maps all the morphisms to the identity morphism $id_X$.
-- **Identity functor**: maps $C$ to itself. Nothing is changed.
+
+- **Faithful functor** is injective on the morphism sets
+- **Full functor** is surjective on the morphism sets.
+- **Constant functor** at $x$, denoted as $\Delta_X: C → D$, maps all objects from category $C$ to a fixed object $x \in D$ and maps all the morphisms to the identity morphism $id_x$.
+- **Endofunctor** maps a category to itself.
+- **Identity functor** maps category to itself and nothing is changed.
+- **Contravariant functor** $F: C → D$ satisfies $F(g \circ f) = F(f) \circ F(g)$, in other words it, the second condition is reversed. We can write a contravariant functor in normal/covariant functor as $F: C_{op} → D$
+- **Presheaf** on a category $C$ is a functor $F: C_{op} → \mathbf{Set}$
 
 ## Examples of functor in programming
 
@@ -468,7 +468,7 @@ int main() {
 }
 ```
 
-## Bifunctors
+# 7.1 Bifunctors
 
 A **bifunctor** is a functor
 - from a **product category**
@@ -477,39 +477,46 @@ A **bifunctor** is a functor
 ### Product Category
 
 Let there be two category $C, D$, the product of $C$ and $D$ contains all possible the pairs of objects and morphisms between $C$ and $D$, that is
-- $obj(C \times D) = \{ (x, y) \mid x \in obj(C), y \in obj(D) \}$
+- $ob(C \times D) = \{ (x, y) \mid x \in ob(C), y \in ob(D) \}$
 - $mor(C \times D) = \{ (f, g) \mid f \in mor(C), g \in mor(D) \}$
-
 
 The morphism composition works like vectors.
 
-So a bifunctor takes the form of $F: (C \times D) → E$.
+So a bifunctor takes the form of $F: C \times D → E$.
 
-### Pair of Objects and Morphisms?
+### Difinition
 
-Actually, we can construct a new category $C'$ that
-- $obj(C') = \{ x \times y \mid x \in obj(C), y \in obj(D) \}$
+A bifunctor $F: C \times D → E$, for all morphism $(f_1, f_2): (x_1 → y_1, x_2 → y_2)$ and $(g_1, g_2): (y_1 → z_1, y_2 → z_2)$, it holds that
+- $F(f_1, f_2): F(x_1, x_2) → F(y_1, y_2)$
+- $F((g_1, g_2) \circ (f_1, f_2)): F(x_1, x_2) → F(z_1, z_2) = F(g_1, g_2) \circ F(f_1, f_2)$
+- $F(id_{x_1}, id_{x_2}) = id_{F(x_1, x_2)}$
+
+
+### Pair of Objects and Morphisms
+
+The product or coproduct of every pair of object do not necessary exists. But if they do, we can construct a new category $C'$ that
+- $ob(C') = \{ x \times y \mid x \in ob(C), y \in ob(D) \}$
 - $mor(C') = \{ f \times g \mid x \in mor(C), y \in mor(D) \}$
 
 Same with coproduct:
-- $obj(C'') = \{ x \oplus y \mid x \in obj(C), y \in obj(D) \}$
-- $mor(C'') = \{ f \oplus g \mid x \in mor(C), y \in mor(D) \}$
+- $ob(C'_{op}) = \{ x \oplus y \mid x \in ob(C), y \in ob(D) \}$
+- $mor(C'_{op}) = \{ f \oplus g \mid x \in mor(C), y \in mor(D) \}$
 
-And there are obvious bifunctors $F': (C \times D) → C'$ and $F'': (C \times D) → C''$
+And there are obvious bifunctors $F': (C \times D) → C'$ and $F'_{op}: (C \times D) → C'_{op}$
 
 ### Wait... What is the Product and Coproduct of Morphism?
 
-The product of morphisms $f: A → A'$ and $g: B → B'$, denoted by $f \times g$, is the unique morphism that
+The product of morphisms $f: a → a'$ and $g: b → b'$, denoted by $f \times g$, is the unique morphism that
 
 $$
-f \times g: (A \times B) → (A' \times B')
+f \times g: (a \times b) → (a' \times b')
 $$
 
 $f \times f'$ is unique because
-- As the definition of product of objects says, object $(A \times B)$ has morphism $p: (A \times B) → A$ and $q: (A \times B) → B$
-- We have composite morphisms $f \circ p: (A \times B) → A'$ and $g \circ q: (A \times B) → B'$
-- The definition of product of objects also says that, for any object that has morphism to $A'$ and $B'$, there exists an unique morphism from that object to $A' \times B'$
-- So, $(A \times B) → (A' \times B')$ is unique.
+- As the definition of product of objects says, object $(a \times b)$ has morphism $p: (a \times b) → A$ and $q: (a \times b) → b$
+- We have composite morphisms $f \circ p: (a \times b) → a'$ and $g \circ q: (a \times b) → b'$
+- The definition of product of objects also says that, for any object that has morphism to $a'$ and $b'$, there exists an unique morphism from that object to $a' \times b'$
+- So, $(a \times b) → (a' \times b')$ is unique.
 
 Similar proof goes with coproduct.
 
@@ -522,7 +529,7 @@ class Bifunctor f where
     bimap (a -> a') -> (b -> b') -> (f a b -> f a' b')
 ```
 
-The `Either` class, defined earlier in C++ to explain coproduct, is a bifunctor if it is applied on functions
+The `Either` class, defined earlier in C++ to explain coproduct, is a bifunctor if it can be applied on functions
 
 ``` C++
 // The object Either is the coproduct of type A and type B
@@ -531,23 +538,52 @@ class Either {
 
     /* ... */
 
+    // map two functions into one
     template <typename P, typename Q>
     auto either_do(
-        P (*funcLeft)(A),
-        Q (*funcRight)(B)
+        P (*funcL)(A),
+        Q (*funcR)(B)
     ) {
-        return [funcLeft, funcRight] (Either<A, B> input, A leftDefault, B rightDefault) {
+        return [funcL, funcR] (Either<A, B> input, A lDefault, B rDefault) {
             Either<P, Q> result;
             if (input.tag == isLeft)
                 result.set(
-                    funcLeft(input.getLeft(leftDefault))
+                    funcL(input.getLeft(lDefault))
                 );
             else
                 result.set(
-                    funcRight(input.getRight(rightDefault))
+                    funcR(input.getRight(rDefault))
                 );
             return result;
         }
     }
 }
 ```
+
+This bifunctor `Either`, maps function pair `P funcL(A)` and `Q funcR(B)` into `Either<P, Q> ()(Either<A, B>)`.
+
+# 7.2 Monoidal Categories
+
+A monoidal category $(C, \otimes, I)$ is consisting of
+- A category $C$.
+- A bifunctor $\otimes: C \times C → C$. (binary operation)
+  - The $\otimes$ is called **tensor product**
+  - $\otimes$ is *associative (up to natural isomorphism)*
+- An unit object $e \in ob(C)$ such that $\forall a \in ob(C), (\otimes(e, a) \simeq a \land \otimes(a, e) \simeq a)$. (identity element)
+- Three natural isomorphisms are involved
+  - The associator
+    - $α_{a,b,c}: \otimes(\otimes(a, b), c) → \otimes(a, \otimes(b, c))$
+  - The left and right unitor
+    - $λ_a: \otimes(e, a) → a$
+    - $ρ_a: \otimes(a, e) → a$
+
+We will write $\otimes(a, b)$ as $a \otimes b$ from now on.
+
+## Example of monoidal categories
+
+Let make a simple monoidal category from the category of C++ `string`. It has a simple bifunctor `concat`. The application of `concat` is to concatenate two strings. The unit object in this monoidal category should be a instance of string `e`, such that `Concat(e, x) == Concat(x, e)`. This instance of string is obviously an empty string. The implementation is in file `monoidalCategory.cpp`.
+
+Note that, in the monoidal category of string concatenation, the morphism between strings are *permutations*.
+
+# 7.3 Profunctor
+
