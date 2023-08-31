@@ -121,7 +121,7 @@ Their Kleisli counterpart over morphism $m$ are category $C_k$, object $x', y', 
 
 ## Initial and Terminal Object
 
-- An object $i$ is a inital object in $\mathcal{C}$ if for every object $x$ in $ob(C)$, there exists exactly one morphism $i → x$.
+- An object $i$ is a inital object in $C$ if for every object $x$ in $ob(C)$, there exists exactly one morphism $i → x$.
 - An object $t$ is a terminal object in $C$ if for every object $x$ in $ob(C)$, there exists exactly one morphism $x → t$.  
 
 Initial & terminal objects are *unique up to unique isomorphism*.
@@ -402,8 +402,22 @@ For a functor $F: C → D$, for all $f: x → y$ and $g: y → z$ in $C$, it hol
 2. $F(g \circ f): F(x) → F(z) = F(g) \circ F(f)$
 3. $F(id_x) = id_{F(x)}$
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Commutative_diagram_of_a_functor.svg/260px-Commutative_diagram_of_a_functor.svg.png)
-
+```mermaid
+flowchart TB
+  subgraph domainCategory
+    x -- f --> y
+    y -- g --> z
+    x -- "g∘f" --> z
+  end
+  subgraph targetCategory
+    Fx["F(x)"] -- "F(f)" --> Fy["F(y)"]
+    Fy -- "F(g)" --> Fz["F(z)"]
+    Fx -- "F(g∘f)" --> Fz
+  end
+  x -.-> Fx
+  y -.-> Fy
+  z -.-> Fz
+```
 
 **Functors are morphisms.** They can do compositions too. For categories $C, D, E$, if there are functor $F: C → D$ and $G: D → E$, we can have composed functor $H = G \circ F: C → E$.
 
