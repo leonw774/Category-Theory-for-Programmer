@@ -5,8 +5,9 @@ title: Category Theory for Programmers
 
 [toc]
 
-Lecture Videos (Youtube): https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
-This note on Hackmd: https://hackmd.io/OkQvCLkHSmaizwJGSJCUUA
+- Lecture Videos (Youtube): https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_
+- Github repo: https://github.com/leonw774/Category-Theory-for-Programmer
+- This note on Hackmd: https://hackmd.io/**OkQvCLkHSmaizwJGSJCUUA**
 
 # 1. What is category
 
